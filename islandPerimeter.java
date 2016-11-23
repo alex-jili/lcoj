@@ -5,11 +5,7 @@
  (water inside that isn't connected to the water around the island). One cell is a square with side length
  1. The grid is rectangular, width and height don't exceed 100. Determine the perimeter of the island.
  **/
-
-import com.google.common.base.Preconditions;
-
 public class islandPerimeter {
-
     private int countIslandEdges(int[][] grid, int x, int y) {
         /* num rows */
         int maxHeight = grid.length;
@@ -26,20 +22,27 @@ public class islandPerimeter {
     }
 
     public int islandPerimeter(int[][] grid) {
+        /*
         Preconditions.checkNotNull(grid);
         Preconditions.checkNotNull(grid[0]);
         Preconditions.checkArgument(grid[0].length != 0);
         Preconditions.checkArgument(grid.length != 0);
-
+        */
         int perimeter = 0;
+        
         for(int row = 0; row < grid.length; row++) {
             for(int column = 0; column < grid[0].length; column++) {
                 if(grid[row][column] == 1) {
-                    System.out.println("row is: " + row + " column is: " + column);
                     perimeter += countIslandEdges(grid, row, column);
                 }
             }
         }
+        /*
+        Arrays.stream(grid)
+              .flatMapToInt(x -> Arrays.stream(x))
+              .filter(x -> x == 1)
+              .forEach();
+        */
         return perimeter;
     }
 
